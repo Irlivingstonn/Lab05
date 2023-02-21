@@ -1,0 +1,58 @@
+#!/bin/bash
+
+function main(){
+
+   if [$@ = ""]{
+      printHelp
+   }
+   else{
+      identifying_flags $@
+   }
+
+}
+
+
+function identifying_flags(){
+
+   local OPTIND opt i
+   while getopts ":hfr:" opt; do
+      echo "OPTARG = $OPTARG = which argument is being looked at"
+     
+
+
+      case $opt in
+         h) printHelp;exit 1 ;;
+         f) search ;;
+         r) echo "ran" ;;
+         \?) 
+               
+               printHelp;exit 1 ;;
+      esac
+   done
+
+   if ["$input" = ""]
+   then
+      echo "No input"
+   else
+      echo "Input is $input"
+   fi
+
+
+}
+
+function printHelp(){
+
+   echo "Usage: namechange -f find -r replace \"string to modify\""
+   echo " -f The text to find in the filename"
+   echo " -r The replacement text for the new filename"
+
+}
+
+function search(){
+   grep -nw $5
+   echo "something happened" 
+}
+
+
+
+main $@

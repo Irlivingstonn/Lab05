@@ -1,0 +1,35 @@
+if ["$input" = ""]
+   then
+      echo "No input"
+   fi
+#!/bin/bash
+
+function main(){
+   echo "Hi"
+   identifying_flags $@
+
+
+}
+
+
+function identifying_flags(){
+
+   local OPTIND opt i
+   while getopts ":hfr:" opt; do
+      case $opt in
+         h) echo "hi";;
+         f) echo "free";;
+         r) echo "ran";;
+         /?) echo "something didnt work" ;;
+      esac
+   done
+
+   if ["$input" = ""]
+   then
+      echo "No input"
+   fi
+
+
+}
+
+main $@
