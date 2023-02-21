@@ -93,17 +93,6 @@ last_letter_of_input="${input: -1}"
 function replace(){
 
 
-
-
-echo "$4"
-echo "$5"
-echo "$6"
-echo "$7"
-echo "$8"
-
-#command="'echo '$7'|sed -e 's/ /$6/g''"
-
-
    if [ "$7" == "" ] || [ ! -f "$7" ]; then
 
       echo "User must provide valid filename"
@@ -114,7 +103,7 @@ echo "$8"
 
    if "$f_operated_first" ; then
       if [ "$4" = "\s"]; then
-echo yooo
+
       mv "$7" "`echo $7 | sed -e "s/ /"$6"/"`"
 #      echo "Renamed \"$7\" to " "`echo $7 | sed -e "s/ /"$6"/"`"
       else
